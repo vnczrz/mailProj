@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +52,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+      'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 ROOT_URLCONF = 'mail.urls'
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 TEMPLATES = [
     {
@@ -69,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mail.wsgi.application'
+
 
 
 # Database
