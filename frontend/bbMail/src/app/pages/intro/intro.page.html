@@ -1,0 +1,29 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>intro</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-slides pager="true">
+ 
+    <!-- Slide 1 -->
+    <ion-slide options="{pagination: false}">
+      <ion-text color="light">
+        <img src="assets/landing.png">
+        <h2 class='intro-text-box'>Welcome to bbMail</h2>
+        <ion-button (click)="next()" fill="solid" color="#D1CCCB">Next</ion-button>
+      </ion-text>
+    </ion-slide>
+ 
+    <!-- Slide 2 -->
+    <ion-slide>
+      <ion-text color="light">
+        <img src="assets/landing.png">
+        <p class='intro-text-box'>This is a mail client utilizing Ionic, Angular and Django REST framework.</p>
+        <ion-button (click)="start()" fill="solid" color="#D1CCCB">Login/Register</ion-button>
+      </ion-text>
+    </ion-slide>
+ 
+  </ion-slides>
+</ion-content>

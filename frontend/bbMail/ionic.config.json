@@ -1,0 +1,7 @@
+{
+  "name": "bbMail",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
