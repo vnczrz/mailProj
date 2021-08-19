@@ -2,11 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { INTRO_KEY } from 'src/app/guards/intro.guard';
 import { Router } from '@angular/router';
-// import { Plugins } from '@capacitor/core';
-// const { Storage } = Plugins;
-// import {   Filesystem,
-//   FilesystemDirectory,
-//   FilesystemEncoding, } from '@capacitor/filesystem';
+
+import { Storage } from '@capacitor/storage';
+
 
 @Component({
   selector: 'app-intro',
@@ -29,14 +27,8 @@ export class IntroPage implements OnInit {
   async start() {
     //Once the users finishes the landing, we will write the according key to our storage and move on to our login page. 
 
-    localStorage.setItem('INTRO_KEY', 'true');
+    await Storage.set({key: INTRO_KEY, value: 'true'});
     this.router.navigateByUrl('/login', { replaceUrl:true });
   }
 
 }
-
-
-    // await Storage.set({key: INTRO_KEY, value: 'true'});
-    // await Filesystem.writeFile({
-
-    // })
