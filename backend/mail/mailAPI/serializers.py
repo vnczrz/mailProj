@@ -1,5 +1,5 @@
-from rest_framework import serializers
-from mailAPI.models import Email
+# from rest_framework import serializers
+# from mailAPI.models import Email
 
-class EmailSerializer(serializers.Serializer):
-    user = serializers.
+# class EmailSerializer(serializers.Serializer):
+#     user = serializers.

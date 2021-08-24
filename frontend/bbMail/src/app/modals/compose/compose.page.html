@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar class="compose-toolbar">
+    
+    <ion-buttons slot="secondary" >
+      <ion-button (click)="closeModal()">
+        <ion-icon shape="round" fill="clear" name="close-circle-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="attach"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <form >
+    <ion-item  lines="full" class="form">
+      <ion-label position="floating">To</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class="form">
+      <ion-label position="floating">From:</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class="form">
+      <ion-label position="floating">Subject</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none"  class="form">
+        <ion-textarea class="compose-text-area" placeholder="Compose Email"></ion-textarea>
+    </ion-item>
+
+
+  </form>
+
+
+</ion-content>
+    
+
+  <!-- <ion-grid>
+
+    <ion-row>
+      <ion-col text-center>
+        ID : {{modelId}}
+      </ion-col>
+    </ion-row>
+
+  </ion-grid> -->
+
+
+    <!-- <ion-row>
+      <ion-col>
+        <ion-button start shape="round" fill="clear">
+          <ion-icon  name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+     -->
+
+
+<!-- <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()">Close Modal</ion-button>
+      </ion-col>
+    </ion-row> -->

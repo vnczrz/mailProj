@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController} from '@ionic/angular';
 import { Router } from '@angular/router'
 
 @Component({
@@ -19,6 +19,8 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private loadingController: LoadingController,
+    // private navCtrl: NavController,
+    // public navParams: NavParams
     ) { }
     
   ngOnInit() {
@@ -50,6 +52,7 @@ export class LoginPage implements OnInit {
 
         await alert.present()
       }
+      
     );
   }
 

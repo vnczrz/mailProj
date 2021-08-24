@@ -19,7 +19,7 @@ const routes: Routes = [
 
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
     canLoad: [AuthGuard] // Secure all child pages
   },
   
@@ -27,7 +27,16 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+  },
+  {
+    path: 'compose',
+    loadChildren: () => import('./modals/compose/compose.module').then( m => m.ComposePageModule)
   }
+
 ];
 @NgModule({
   imports: [

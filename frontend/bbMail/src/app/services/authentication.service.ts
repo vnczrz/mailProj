@@ -21,8 +21,7 @@ export class AuthenticationService {
   }
 
   async loadToken() {
-    // // localStorage.setItem('TOKEN_KEY', 'my-token');
-    // const token = localStorage.getItem('TOKEN_KEY')
+
     const token = await Storage.get({ key: TOKEN_KEY });
 
     if (token && token.value) {
@@ -35,6 +34,7 @@ export class AuthenticationService {
   }
 
   login(credentials: {email, password}): Observable<any> {
+    //When we request a token after login, we will store it locally (with a bit of RxJS fun since Storage returns a Promise and we need an Observable) and also set the new value to our behaviour subject.
     return this.http.post(`https://reqres.in/api/login`, credentials).pipe(
       map((data: any) => data.token),
       switchMap(token => {
@@ -44,6 +44,11 @@ export class AuthenticationService {
         this.isAuthenticated.next(true);
       })
     )
+  }
+
+  logout(): Promise<void>{
+    this.isAuthenticated.next(false);
+    return Storage.remove({key: TOKEN_KEY})
   }
 
 }

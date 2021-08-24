@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,9 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     'users',
     'mailAPI',
+    # 'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -53,15 +59,51 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# REST_FRAMEWORK = {
+#   'DEFAULT_AUTHENTICATION_CLASSES': (
+#       'rest_framework.authentication.TokenAuthentication',
+#     )
+# }
+
 REST_FRAMEWORK = {
-  'DEFAULT_AUTHENTICATION_CLASSES': (
-      'rest_framework.authentication.TokenAuthentication',
-    )
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
+
+# Configure the JWTs to expire after 1 hour, and allow users to refresh near-expiration tokens
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=2),
+    'JWT_ALLOW_REFRESH': True,
+}
+
+# Make JWT Auth the default authentication mechanism for Django
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+# Enables django-rest-auth to use JWT tokens instead of regular tokens.
+REST_USE_JWT = True
+
+# To make the registration app work, we’ll also have to add the following setting, which is required for the django.contrib.sites dependency.
+SITE_ID = 1
 
 ROOT_URLCONF = 'mail.urls'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# //custom user model has no username field so we specify to allauth
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 TEMPLATES = [
     {
