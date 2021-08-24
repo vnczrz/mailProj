@@ -11,6 +11,9 @@ export class ComposePage implements OnInit {
   modalTitle: string;
   modelId: number;
 
+  //ModalController: This class provides the dismiss() method which can pass data to parent page from this modal is opened.
+  
+  //NavParams: This class helps in fetching the data passed in create() method from parent page from where this Modal is opened.
   constructor(
     private modalCtrl: ModalController,
     private navParams: NavParams
