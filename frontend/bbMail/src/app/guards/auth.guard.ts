@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../services/authentication.service';
+import { AuthenticationService } from '../services/api/authentication.service';
 import { Injectable } from '@angular/core';
 import { CanLoad, Router } from '@angular/router';
 import { Observable } from 'rxjs';
